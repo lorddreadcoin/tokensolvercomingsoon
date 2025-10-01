@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TokenSOLver - Universal Solana Analytics | Powered by $BUILDAI</title>
+    
+
+    <meta name="description" content="TokenSOLver - The most advanced Solana analytics platform powered by $BUILDAI community. AI-driven wallet forensics, real-time risk scoring, and enterprise-grade blockchain intelligence.">
+    <meta name="keywords" content="TokenSOLver, BUILDAI, Solana analytics, wallet forensics, blockchain intelligence, DeFi security, crypto analysis">
+    <meta name="author" content="TokenSOLver Team">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="TokenSOLver - Universal Solana Analytics | Powered by $BUILDAI">
+    <meta property="og:description" content="The most advanced Solana analytics platform powered by $BUILDAI community. AI-driven forensics and real-time risk scoring.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://beta.tokensolver.xyz">
+    <meta property="og:image" content="https://i.imgur.com/0O1cRIe.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TokenSOLver - Universal Solana Analytics">
+    <meta name="twitter:description" content="AI-powered Solana analytics platform powered by $BUILDAI community. Coming Soon.">
+    <meta name="twitter:image" content="https://i.imgur.com/0O1cRIe.png">
+    
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 30%, #16213e 70%, #0f3460 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Enhanced animated background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: linear-gradient(45deg, #00d4ff, #0099cc, #ffffff);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+            opacity: 0.8;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.8; }
+            25% { transform: translateY(-30px) rotate(90deg); opacity: 1; }
+            50% { transform: translateY(-15px) rotate(180deg); opacity: 0.6; }
+            75% { transform: translateY(-25px) rotate(270deg); opacity: 1; }
+        }
+
+        /* Main container */
+        .container {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        /* Header section with logos */
+        .header-section {
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .buildai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 50px;
+            padding: 1rem 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .buildai-badge:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(0, 212, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .buildai-logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .badge-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #00d4ff;
+        }
+
+        /* Logo and branding */
+        .logo-section {
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .logo {
+            font-size: 4.5rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #00d4ff, #0099cc, #ffffff, #00ff88);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 40px rgba(0, 212, 255, 0.4);
+            animation: gradientShift 4s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .tagline {
+            font-size: 1.6rem;
+            color: #e0e0e0;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        /* Hero image section */
+        .hero-image {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease-out 0.4s both;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* Main content */
+        .main-content {
+            max-width: 900px;
+            margin-bottom: 4rem;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .coming-soon {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d, #6bcf7f, #00d4ff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 30px rgba(255, 107, 107, 0.4);
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        .description {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+            margin-bottom: 3rem;
+        }
+
+        /* Enhanced features grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .feature:hover::before {
+            left: 100%;
+        }
+
+        .feature:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(0, 212, 255, 0.4);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+        }
+
+        .feature-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+
+        .feature-desc {
+            color: #c0c0c0;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        /* Community showcase */
+        .community-section {
+            margin-bottom: 4rem;
+            animation: fadeInUp 1s ease-out 1s both;
+        }
+
+        .community-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Pump.fun livestream link */
+        .pumpfun-row {
+            display: flex;
+            justify-content: center;
+            margin: -0.5rem 0 1.5rem;
+        }
+
+        .pumpfun-live {
+            display: inline-block;
+            padding: 0.85rem 1.25rem;
+            border-radius: 12px;
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            color: #ffffff;
+            font-weight: 800;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .pumpfun-live:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(45deg, #0099cc, #00d4ff);
+        }
+
+        .alt-note {
+            text-align: center;
+            color: #a0a0a0;
+            font-size: 0.95rem;
+            margin: 0.25rem 0 1.5rem;
+        }
+        .alt-note a {
+            color: #b8e1ff;
+            text-decoration: none;
+        }
+        .alt-note a:hover {
+            color: #e5f7ff;
+            text-decoration: underline;
+        }
+
+        .community-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .community-image {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        .community-image:hover {
+            transform: scale(1.05);
+        }
+
+        /* Enhanced notify section */
+        .notify-section {
+            animation: fadeInUp 1s ease-out 1.2s both;
+        }
+
+        .notify-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .notify-subtitle {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+        }
+
+        .notify-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 2rem auto;
+        }
+
+        .email-input {
+            flex: 1;
+            padding: 1.2rem 1.8rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 1.1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .email-input::placeholder {
+            color: #999;
+        }
+
+        .email-input:focus {
+            border-color: #00d4ff;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.4);
+        }
+
+        .notify-btn {
+            padding: 1.2rem 2.5rem;
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            border: none;
+            border-radius: 50px;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .notify-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 212, 255, 0.5);
+            background: linear-gradient(45deg, #0099cc, #00d4ff);
+        }
+
+        /* Social links */
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 3rem;
+            animation: fadeInUp 1s ease-out 1.4s both;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-link:hover {
+            background: #00d4ff;
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.5);
+            border-color: #00d4ff;
+        }
+
+        /* X accounts stacked */
+        .x-accounts {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 1.4s both;
+        }
+
+        .x-icon {
+            width: 60px;
+            height: 60px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            font-size: 2rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.3));
+        }
+
+        .x-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .x-link {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .x-link:hover {
+            color: #00d4ff;
+            text-decoration: underline;
+        }
+
+        /* Market chart embed */
+        .dxs-section {
+            max-width: 1600px;
+            width: 95%;
+            margin: 3rem auto;
+            border-radius: 20px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.06);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .dxs-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 0 auto 1rem;
+            background: linear-gradient(45deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        #dexscreener-embed { position: relative; width: 100%; padding-bottom: 125%; }
+        @media (min-width: 1400px) { #dexscreener-embed { padding-bottom: 65%; } }
+        #dexscreener-embed iframe { position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: 0; }
+
+        /* Footer */
+        .footer {
+            color: #666;
+            font-size: 1rem;
+            animation: fadeInUp 1s ease-out 1.6s both;
+            text-align: center;
+            margin: 2rem auto;
+        }
+
+        .footer-buildai {
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        .disclaimer {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 3rem;
+            }
+            
+            .coming-soon {
+                font-size: 2.8rem;
+            }
+            
+            .description {
+                font-size: 1.2rem;
+            }
+            
+            .notify-form {
+                flex-direction: column;
+                max-width: 350px;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .community-images {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-links {
+                gap: 1.5rem;
+            }
+
+            .buildai-badge {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 1rem 1.5rem;
+            }
+
+            .buildai-logo {
+                height: 30px;
+            }
+        }
+
+        /* Loading animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeOut 2s ease-out 1s forwards;
+        }
+
+        .loading-logo {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #00d4ff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading overlay -->
+    <div class="loading-overlay">
+        <div class="loading-logo">TokenSOLver</div>
+    </div>
+
+    <!-- Animated background particles -->
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <!-- Header with BUILDAI badge -->
+        <div class="header-section">
+            <div class="buildai-badge">
+                <img src="https://i.imgur.com/0O1cRIe.png" alt="$BUILDAI Official Logo" class="buildai-logo">
+                <span class="badge-text">Powered by the Community of $BUILDAI</span>
+            </div>
+        </div>
+
+        <!-- Logo Section -->
+        <div class="logo-section">
+            <div class="logo">TokenSOLver</div>
+            <div class="tagline">Universal Solana Analytics Platform</div>
+            <div class="subtitle">AI-Powered Blockchain Intelligence</div>
+        </div>
+
+        <!-- Hero Image (Prominent $BUILDAI Official Logo) -->
+        <img src="https://i.imgur.com/0O1cRIe.png" alt="$BUILDAI Official Logo" class="hero-image">
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h1 class="coming-soon">Coming Soon</h1>
+            <p class="description">
+                The most advanced Solana analytics platform is launching soon, powered by the innovative $BUILDAI community. 
+                Experience enterprise-grade wallet forensics, real-time risk scoring, and AI-powered blockchain intelligence 
+                like never before.
+            </p>
+            
+            <div class="buildai-info">
+                <h3 style="color: #00d4ff; font-size: 1.8rem; margin-bottom: 1rem;">Powered by the $BUILDAI Community</h3>
+                <p style="color: #e0e0e0; font-size: 1.2rem; line-height: 1.6; margin-bottom: 2rem;">
+                    TokenSOLver grows through community contribution—code, design, testing, and education—focused on building better tools.
+                </p>
+            </div>
+        </div>
+
+        <!-- Enhanced Features -->
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🔍</div>
+                <div class="feature-title">AI Wallet Forensics</div>
+                <div class="feature-desc">Advanced behavioral analysis and risk scoring for any Solana wallet address with machine learning precision</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-title">Real-Time Analytics</div>
+                <div class="feature-desc">Live blockchain data processing with instant threat detection, alerts, and comprehensive reporting</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🛡️</div>
+                <div class="feature-title">Enterprise Security</div>
+                <div class="feature-desc">Production-grade infrastructure with circuit breakers, fault tolerance, and 99.9% uptime guarantee</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎯</div>
+                <div class="feature-title">SOLGuard Rating System</div>
+                <div class="feature-desc">Scoring powered by SOLGuard Engine (top-holder and behavior analysis). Chat with SOLGuard AI for insights and next steps.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🧩</div>
+                <div class="feature-title">Autolist Dexscreener Extension</div>
+                <div class="feature-desc">Native Chrome extension that auto-lists new PumpFun tokens on Dexscreener. Independent tool; no PumpFun partnership implied.</div>
+            </div>
+        </div>
+
+        <!-- Market Chart (Dexscreener embed) -->
+        <div class="dxs-section">
+            <h2 class="dxs-title">Live Market Overview</h2>
+            <div id="dexscreener-embed">
+                <iframe src="https://dexscreener.com/solana/6pKfa2xAkMCouoSHiCSTZf7xEooEUVA6tuyV6Akkbkqz?embed=1&loadChartSettings=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15" title="Dexscreener chart for TokenSOLver on Solana" aria-label="Dexscreener chart" loading="lazy"></iframe>
+            </div>
+        </div>
+
+        <!-- Community Showcase -->
+        <div class="community-section">
+            <h2 class="community-title">Built by the $BUILDAI Community</h2>
+            <div class="pumpfun-row">
+                <a class="pumpfun-live" href="https://pump.fun/coin/4JHxg6hTTETRoF5HeYqE8iobUNY4uMRMEE3MQfRWpump" target="_blank" rel="noopener noreferrer">💸 Buy on Pump.fun</a>
+            </div>
+            <div class="alt-note">
+                Prefer Pump.fun to support the community — or
+                <a href="https://dexscreener.com/solana/6pKfa2xAkMCouoSHiCSTZf7xEooEUVA6tuyV6Akkbkqz" target="_blank" rel="noopener noreferrer">buy on Dexscreener</a>.
+            </div>
+            <div class="community-images">
+                <img src="https://i.imgur.com/lgv6q1J.png" alt="BuildAI Schedule" class="community-image">
+            </div>
+        </div>
+
+        <!-- Enhanced Notify Section -->
+        <div class="notify-section">
+            <h3 class="notify-title">Be First to Access TokenSOLver</h3>
+            <p class="notify-subtitle">Join thousands of DeFi professionals waiting for launch</p>
+            <form name="notify" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="notify-form" id="notifyForm">
+                <input type="hidden" name="form-name" value="notify">
+                <p style="display:none">
+                    <label>Don’t fill this out: <input name="bot-field"></label>
+                </p>
+                <input type="email" class="email-input" name="email" placeholder="Enter your email address" required>
+                <button type="submit" class="notify-btn">Notify Me</button>
+            </form>
+            <p style="color: #888; font-size: 0.9rem; margin-top: 1rem;">
+                TokenSOLver ticker and CA will be delivered soon to early subscribers
+            </p>
+        </div>
+
+        <!-- Official X Accounts -->
+        <div class="x-accounts">
+            <div class="x-icon">𝕏</div>
+            <div class="x-links">
+                <a href="https://x.com/tokensolver" target="_blank" rel="noopener noreferrer" class="x-link">x.com/tokensolver</a>
+                <a href="https://x.com/cryptodanksx" target="_blank" rel="noopener noreferrer" class="x-link">x.com/cryptodanksx — Lead Dev</a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+        © 2024 TokenSOLver. Built on Solana. Powered by <span class="footer-buildai">$BUILDAI</span> Community.
+        <div class="disclaimer">Informational only. Not financial advice or an investment offer.</div>
+        </div>
+
+    <script>
+        // Enhanced particle system
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 80;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                
+                // Random size variation
+                const size = Math.random() * 2 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        document.getElementById('notifyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('.email-input').value;
+            
+            if (email) {
+                const form = this;
+                const button = form.querySelector('.notify-btn');
+                const originalText = button.textContent;
+                button.disabled = true;
+                button.textContent = 'Submitting…';
+
+                // Submit to Netlify Forms
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams({ 'form-name': 'notify', email })
+                })
+                .then(() => {
+                    // Success UI
+                    button.textContent = 'Added! ✓';
+                    button.style.background = 'linear-gradient(45deg, #00ff88, #6bcf7f)';
+                    form.querySelector('.email-input').value = '';
+
+                    const successMsg = document.createElement('div');
+                    successMsg.textContent = 'Thank you! You\'ll be notified when TokenSOLver launches with ticker and CA details.';
+                    successMsg.style.cssText = 'color: #00ff88; font-size: 0.9rem; margin-top: 1rem; animation: fadeInUp 0.5s ease-out;';
+                    form.appendChild(successMsg);
+                    setTimeout(() => successMsg.remove(), 5000);
+
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                        button.style.background = 'linear-gradient(45deg, #00d4ff, #0099cc)';
+                        button.disabled = false;
+                    }, 3000);
+                })
+                .catch(() => {
+                    // Error UI
+                    button.textContent = 'Try Again';
+                    button.style.background = 'linear-gradient(45deg, #ff6b6b, #ff9966)';
+                    const errMsg = document.createElement('div');
+                    errMsg.textContent = 'Submission failed. Please check your connection and try again.';
+                    errMsg.style.cssText = 'color: #ff6b6b; font-size: 0.9rem; margin-top: 1rem; animation: fadeInUp 0.5s ease-out;';
+                    form.appendChild(errMsg);
+                    setTimeout(() => {
+                        errMsg.remove();
+                        button.textContent = originalText;
+                        button.style.background = 'linear-gradient(45deg, #00d4ff, #0099cc)';
+                        button.disabled = false;
+                    }, 3000);
+                });
+            }
+        });
+
+        // Enhanced mouse interaction
+        document.addEventListener('mousemove', function(e) {
+            const particles = document.querySelectorAll('.particle');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            particles.forEach((particle, index) => {
+                const speed = (index % 7 + 1) * 0.8;
+                const x = (mouseX - 0.5) * speed * 2;
+                const y = (mouseY - 0.5) * speed * 2;
+                particle.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+
+        // Initialize enhanced effects
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            
+            // Smooth scroll for better UX
+            document.documentElement.style.scrollBehavior = 'smooth';
+            
+            // Add intersection observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe animated elements
+            document.querySelectorAll('.feature, .community-image').forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        // Enhanced loading experience
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.querySelector('.loading-overlay').style.display = 'none';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
+
+
